@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewsActivity"
+    android:background="@drawable/bg1">
+    <Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:background="@color/white"
+        android:minHeight="?android:attr/actionBarSize"
+        android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
+        android:titleTextColor="@color/black">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text="ERP"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp">
+
+        </TextView>
+    </Toolbar>
+
+    <TextView
+        android:id="@+id/txt01"
+        android:layout_below="@id/toolbar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-black"
+        android:text="NEWS"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="italic">
+
+    </TextView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt01">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card1"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:layout_margin="30dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="16dp"
+                tools:layout_editor_absoluteX="5dp"
+                tools:layout_editor_absoluteY="140dp">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="30dp"
+                    android:src="@drawable/news1"
+                    tools:layout_editor_absoluteX="134dp"
+                    tools:layout_editor_absoluteY="162dp" />
+
+                <TextView
+                    android:id="@+id/txt1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_margin="10dp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:text="Bharatiya Chatra Sansad"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/txt12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Web content is the text, visual or audio content that is made available online and user encountered as part of the online usage and experience on websites. It may include text, images, sounds and audio, online videos, among other items placed within web pages."
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:layout_margin="30dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="30dp"
+                tools:layout_editor_absoluteX="5dp"
+                tools:layout_editor_absoluteY="140dp">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="319dp"
+                    android:layout_height="167dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="40dp"
+                    android:src="@drawable/arohan"
+                    tools:layout_editor_absoluteX="134dp"
+                    tools:layout_editor_absoluteY="162dp" />
+
+                <TextView
+                    android:id="@+id/txt2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_margin="10dp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:text="Alumni Meet"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/txt22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="10dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Web content is the text, visual or audio content that is made available online and user encountered as part of the online usage and experience on websites. It may include text, images, sounds and audio, online videos, among other items placed within web pages."
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card3"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:layout_margin="30dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="30dp"
+                tools:layout_editor_absoluteX="5dp"
+                tools:layout_editor_absoluteY="140dp">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="30dp"
+                    android:src="@drawable/alumni"
+                    tools:layout_editor_absoluteX="134dp"
+                    tools:layout_editor_absoluteY="162dp" />
+
+                <TextView
+                    android:id="@+id/txt3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_margin="10dp"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:text="Bharatiya Chatra Sansad"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/txt32"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Web content is the text, visual or audio content that is made available online and user encountered as part of the online usage and experience on websites. It may include text, images, sounds and audio, online videos, among other items placed within web pages."
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:background="@color/white"
+        android:minHeight="?android:attr/actionBarSize"
+        android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
+        android:titleTextColor="@color/black">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text="ERP"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold">
+
+        </TextView>
+    </Toolbar>
+</RelativeLayout>
