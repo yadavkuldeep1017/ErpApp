@@ -55,9 +55,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="UserName"
-                android:textColorHint="@color/black">
-
+                android:textColorHint="@color/black"
+                android:id="@+id/user">
             </EditText>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -78,7 +85,8 @@
                 android:layout_height="wrap_content"
                 android:hint="Password"
                 android:textColorHint="@color/black"
-                android:inputType="textPassword">
+                android:inputType="textPassword"
+                android:id="@+id/pass">
 
             </EditText>
         </LinearLayout>
@@ -102,7 +110,6 @@
             android:textColorHint="@color/white">
 
         </Button>
-
 
     </LinearLayout>
 

@@ -17,11 +17,19 @@ public class StudentDash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dash);
         crd1 = (CardView) findViewById(R.id.card1);
+        crd3=(CardView)findViewById(R.id.card3);
         crd1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent stintent = new Intent(StudentDash.this,NewsActivity.class);
                 startActivity(stintent);
+            }
+        });
+        crd3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent res=new Intent(StudentDash.this,Result.class);
+                startActivity(res);
             }
         });
     }
