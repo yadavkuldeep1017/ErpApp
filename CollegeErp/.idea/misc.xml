@@ -5,15 +5,20 @@
       <map>
         <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.2265" />
         <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2265" />
-        <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_add_result.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_login.xml" value="0.6" />
         <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_news.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_notification.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_recover_password.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_result.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_result2.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_result_sheet.xml" value="0.1" />
         <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_start.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_student_dash.xml" value="0.2" />
+        <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/activity_time_table.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/layout/result_layout.xml" value="0.1" />
         <entry key="..\:/Users/Kuldeep Yadav/AndroidStudioProjects/CollegeErp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>

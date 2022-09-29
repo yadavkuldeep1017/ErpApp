@@ -6,8 +6,33 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="15dp"
+    android:background="@drawable/bg1"
     tools:context=".RegisterActivity">
+    <Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:background="@color/white"
+        android:minHeight="?android:attr/actionBarSize"
+        android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
+        android:titleTextColor="@color/black">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text="ERP"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp">
+
+        </TextView>
+    </Toolbar>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

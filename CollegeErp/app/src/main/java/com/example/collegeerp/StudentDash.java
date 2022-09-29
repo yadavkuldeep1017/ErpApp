@@ -17,6 +17,7 @@ public class StudentDash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dash);
         crd1 = (CardView) findViewById(R.id.card1);
+        crd2=findViewById(R.id.card2);
         crd3=(CardView)findViewById(R.id.card3);
         crd1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,10 +26,17 @@ public class StudentDash extends AppCompatActivity {
                 startActivity(stintent);
             }
         });
+        crd2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent stintent = new Intent(StudentDash.this,TimeTable.class);
+                startActivity(stintent);
+            }
+        });
         crd3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent res=new Intent(StudentDash.this,Result.class);
+                Intent res=new Intent(StudentDash.this,ResultActivity.class);
                 startActivity(res);
             }
         });

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableRow
+        android:id="@+id/tablelayoutrow"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="284dp"
+        android:background="@color/purple_200"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/srno"
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="SR No"
+            android:textSize="15sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Course Code"
+            android:textSize="15sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/subject"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Course Subject"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/mark"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="Course Title"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="100"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </TableRow>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
