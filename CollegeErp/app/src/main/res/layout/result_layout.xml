@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/srno"
-            android:layout_width="54dp"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="SR No"
@@ -21,17 +21,8 @@
             android:textStyle="bold"></TextView>
 
         <TextView
-            android:id="@+id/code"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Course Code"
-            android:textSize="15sp"
-            android:textStyle="bold"></TextView>
-
-        <TextView
             android:id="@+id/subject"
-            android:layout_width="100dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Course Subject"
@@ -40,15 +31,15 @@
 
         <TextView
             android:id="@+id/mark"
-            android:layout_width="50dp"
+            android:layout_width="65dp"
             android:layout_height="30dp"
             android:gravity="center"
-            android:text="Course Title"
+            android:text="Marks"
             android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="98dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="100"

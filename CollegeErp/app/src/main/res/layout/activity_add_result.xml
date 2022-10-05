@@ -4,7 +4,124 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddResultActivity">
+    tools:context=".AddResultActivity"
+    >
+
+
+        <TextView
+            android:id="@+id/t3"
+            android:layout_width="55dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="24dp"
+            android:text="Sub1:"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/e2"
+            app:layout_constraintHorizontal_bias="0.928"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <EditText
+            android:id="@+id/e2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="20dp"
+            android:hint="Enter the Marks of first subject"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/t4"
+            android:layout_width="55dp"
+            android:layout_height="33dp"
+
+
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="44dp"
+            android:text="Sub2:"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/e3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/t3" />
+
+        <TextView
+            android:id="@+id/t5"
+            android:layout_width="55dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="28dp"
+            android:text="Sub3:"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/e4"
+            app:layout_constraintHorizontal_bias="0.867"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/t4" />
+
+        <TextView
+            android:id="@+id/t6"
+            android:layout_width="55dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="28dp"
+            android:text="Sub4:"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/e4"
+            app:layout_constraintHorizontal_bias="0.867"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/t4" />
+
+        <EditText
+            android:id="@+id/e3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="28dp"
+            android:hint="Enter Marks of Second subject"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/e2" />
+
+        <EditText
+            android:id="@+id/e4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="48dp"
+            android:hint="Enter Marks of third subject"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/e3" />
+
+        <EditText
+            android:id="@+id/e5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="84dp"
+            android:layout_marginEnd="28dp"
+            android:hint="Enter Marks of Fourth subject"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/e3" />
+
+        <Button
+            android:id="@+id/addresult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="104dp"
+            android:text="Add Result"
+            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintHorizontal_bias="0.528"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/t5" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="108dp"
+            android:layout_marginEnd="60dp"
+            android:text="Clear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/e4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

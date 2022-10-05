@@ -110,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
         student=new Student();
         student.setName(nm);student.setPasswd(pss);student.setPrn(pr);student.setRoll(rll);student.setCourse(crse);student.setYear(yer);student.setEmail(em);
         student.setGender(gen);
-        reference.push().setValue(student);
+        reference.child(pr).setValue(student);
         Toast.makeText(RegisterActivity.this, "Data Added Successfully", Toast.LENGTH_LONG).show();
         progressbar.setVisibility(View.GONE);
     }

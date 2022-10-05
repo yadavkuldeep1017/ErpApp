@@ -19,6 +19,9 @@ public class StudentDash extends AppCompatActivity {
         crd1 = (CardView) findViewById(R.id.card1);
         crd2=findViewById(R.id.card2);
         crd3=(CardView)findViewById(R.id.card3);
+        Bundle msg=getIntent().getExtras();
+        String prn=msg.getString("prn");
+        String course=msg.getString("course");
         crd1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,6 +40,8 @@ public class StudentDash extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent res=new Intent(StudentDash.this,ResultActivity.class);
+                res.putExtra("course",course);
+                res.putExtra("prn",prn);
                 startActivity(res);
             }
         });

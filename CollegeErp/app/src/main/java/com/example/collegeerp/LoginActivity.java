@@ -53,12 +53,9 @@ public class LoginActivity extends AppCompatActivity {
         String pass=e2.getText().toString().trim();
         if(user.charAt(0)=='S') {
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Student");
-            //System.out.println("vdnvfj");
-            //reference.
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    System.out.println("vdnvfj");
                     boolean login = false;
                     if (TextUtils.isEmpty(user)) {
                         Toast.makeText(getApplicationContext(), "Please Enter Username", Toast.LENGTH_LONG).show();
@@ -71,7 +68,6 @@ public class LoginActivity extends AppCompatActivity {
                         return;
                     }
                     String prn=user.substring(1,user.length());
-                    System.out.println(prn);
                     for (DataSnapshot data : snapshot.getChildren()) {
                         String uname = data.child("prn").getValue().toString();
                         System.out.println(uname);
@@ -83,13 +79,31 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     if (login) {
                         Toast.makeText(getApplicationContext(), "Login Successfull", Toast.LENGTH_LONG).show();
-                        bar.setVisibility(View.GONE);
-                        Intent l1 = new Intent(LoginActivity.this, StudentDash.class);
-                        l1.putExtra("Username", user);
-                        startActivity(l1);
+                        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Student").child(prn);
+                        reference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String course="";
+                                for(DataSnapshot data:snapshot.getChildren()){
+                                    String key=data.getKey();
+                                    if(key.equals("course")) {
+                                        course = data.getValue().toString();
+                                        break;
+                                    }
+                                }
+                                System.out.println(course);
+                                Intent l1 = new Intent(LoginActivity.this, StudentDash.class);
+                                l1.putExtra("prn",prn);
+                                l1.putExtra("course",course);
+                                startActivity(l1);
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
                     } else {
                         Toast.makeText(getApplicationContext(), "Login UnSuccessfull", Toast.LENGTH_LONG).show();
-                        bar.setVisibility(View.GONE);
                         Intent l1 = new Intent(LoginActivity.this, LoginActivity.class);
                         startActivity(l1);
                     }
@@ -99,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onCancelled(@NonNull DatabaseError error) {
                 }
             });
-        }else if(user.charAt(0)=='T'){
+        }else if(user.charAt(0)=='E'){
 
         }
         else{
@@ -126,13 +140,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String email=emailet.getText().toString().trim();
-                DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Student");
+                DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Student");
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot dataSnapshot:snapshot.getChildren()){
                             String pn=dataSnapshot.child("prn").getValue().toString();
                             String em=dataSnapshot.child("email").getValue().toString();
                             if(pn.equals(prn.getText().toString()) && em.equals(email)){
+                                Toast.makeText(LoginActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                                 Intent intent=new Intent(LoginActivity.this,RecoverPassword.class);
                                 intent.putExtra("PRN",pn);
                                 startActivity(intent);
@@ -150,6 +166,7 @@ public class LoginActivity extends AppCompatActivity {
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(LoginActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
         });

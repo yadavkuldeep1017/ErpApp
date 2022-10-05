@@ -3,6 +3,7 @@ package com.example.collegeerp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -21,6 +22,7 @@ public class RecoverPassword extends AppCompatActivity {
     EditText e1,e2;
     Button b1;
     String prn;
+    DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Student");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +47,6 @@ public class RecoverPassword extends AppCompatActivity {
                 }
                 if(pass.equals(cpass)){
                     Toast.makeText(RecoverPassword.this, "Password Updated Successfully", Toast.LENGTH_SHORT).show();
-                    DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Student");
                     reference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -53,6 +54,12 @@ public class RecoverPassword extends AppCompatActivity {
                                 String p=dataSnapshot.child("prn").getValue().toString();
                                 if(p.equals(prn)){
                                     Toast.makeText(RecoverPassword.this, "Update Done", Toast.LENGTH_SHORT).show();
+                                    Student s=dataSnapshot.getValue(Student.class);
+                                    s.setPasswd(pass);
+                                    reference=FirebaseDatabase.getInstance().getReference("Student").child(prn);
+                                    reference.setValue(s);
+                                    Intent intent=new Intent(RecoverPassword.this,LoginActivity.class);
+                                    startActivity(intent);
                                 }
                             }
                         }
