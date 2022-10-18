@@ -3,11 +3,15 @@ package com.example.collegeerp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,7 +29,6 @@ public class RegisterActivity extends AppCompatActivity {
      EditText name,prn,roll,pass,cnpass,email;
      Spinner course,year;
      Button Btn;
-     ProgressBar progressbar;
      DatabaseReference reference;
      Student student;
      RadioGroup rggrup;
@@ -44,7 +47,6 @@ public class RegisterActivity extends AppCompatActivity {
         email=findViewById(R.id.email);
         Btn = findViewById(R.id.btnregister);
         rggrup=findViewById(R.id.gender);
-        progressbar = findViewById(R.id.progressbar);
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -52,9 +54,34 @@ public class RegisterActivity extends AppCompatActivity {
                 registerNewUser();
             }
         });
+        ImageButton menuButton = (ImageButton) findViewById(R.id.menubutton);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(RegisterActivity.this,menuButton);
+                popupMenu.getMenuInflater().inflate(R.menu.popup, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        Intent intent;
+                        switch (menuItem.getItemId())
+                        {
+                            case R.id.profile:intent=new Intent(RegisterActivity.this,AdminDash.class);
+                                startActivity(intent);
+                                break;
+                            case R.id.logout:intent=new Intent(RegisterActivity.this,LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                                break;
+                        }
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
     }
     private void registerNewUser(){
-        progressbar.setVisibility(View.VISIBLE);
         String nm,pr,rll,pss,cpss,crse,yer,em;
         nm = name.getText().toString();
         pr = prn.getText().toString();
@@ -66,7 +93,6 @@ public class RegisterActivity extends AppCompatActivity {
         yer=String.valueOf(year.getSelectedItem());
         if (TextUtils.isEmpty(nm)) {
             Toast.makeText(getApplicationContext(),"Please enter Name!",Toast.LENGTH_LONG).show();
-            progressbar.setVisibility(View.GONE);
             return;
         }
         if (TextUtils.isEmpty(pr)) {
@@ -75,43 +101,38 @@ public class RegisterActivity extends AppCompatActivity {
         }
         if (TextUtils.isEmpty(rll)) {
             Toast.makeText(getApplicationContext(),"Please enter Roll No.!",Toast.LENGTH_LONG).show();
-            progressbar.setVisibility(View.GONE);
             return;
         }
         int rgselec=rggrup.getCheckedRadioButtonId();
         if(rgselec==-1){
             Toast.makeText(getApplicationContext(),"Please Select a gender!",Toast.LENGTH_LONG).show();
-            progressbar.setVisibility(View.GONE);
             return;
         }
         gender=findViewById(rgselec);
         String gen=gender.getText().toString();
         if (TextUtils.isEmpty(em)) {
             Toast.makeText(getApplicationContext(),"Please enter Email!",Toast.LENGTH_LONG).show();
-            progressbar.setVisibility(View.GONE);
             return;
         }
         if (TextUtils.isEmpty(pss)) {
             Toast.makeText(getApplicationContext(),"Please enter Password",Toast.LENGTH_LONG).show();
-            progressbar.setVisibility(View.GONE);
             return;
         }
         if (TextUtils.isEmpty(cpss)) {
             Toast.makeText(getApplicationContext(),"Please enter Confirm Password!",Toast.LENGTH_LONG).show();
-            progressbar.setVisibility(View.GONE);
             return;
         }
         if(!pss.equals(cpss)){
             Toast.makeText(getApplicationContext(),"Password and Confirm Password Not Matched!",Toast.LENGTH_LONG).show();
-            progressbar.setVisibility(View.GONE);
             return;
         }
         reference=FirebaseDatabase.getInstance().getReference("Student");
         student=new Student();
         student.setName(nm);student.setPasswd(pss);student.setPrn(pr);student.setRoll(rll);student.setCourse(crse);student.setYear(yer);student.setEmail(em);
         student.setGender(gen);
-        reference.child(pr).setValue(student);
+        reference.child(crse).child(pr).setValue(student);
         Toast.makeText(RegisterActivity.this, "Data Added Successfully", Toast.LENGTH_LONG).show();
-        progressbar.setVisibility(View.GONE);
+        Intent intent=new Intent(this,AdminDash.class);
+        startActivity(intent);
     }
 }

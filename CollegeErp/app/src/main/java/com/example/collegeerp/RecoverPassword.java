@@ -21,8 +21,9 @@ public class RecoverPassword extends AppCompatActivity {
 
     EditText e1,e2;
     Button b1;
-    String prn;
-    DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Student");
+    Bundle msg;
+    String flag;
+    DatabaseReference reference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +31,8 @@ public class RecoverPassword extends AppCompatActivity {
         e1=(EditText) findViewById(R.id.rpass);
         e2=(EditText) findViewById(R.id.rcpass);
         b1=(Button) findViewById(R.id.updpass);
-        Bundle msg=getIntent().getExtras();
-        prn=msg.getString("PRN");
+        msg=getIntent().getExtras();
+        flag=msg.getString("Flag");
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,29 +47,58 @@ public class RecoverPassword extends AppCompatActivity {
                     return;
                 }
                 if(pass.equals(cpass)){
-                    Toast.makeText(RecoverPassword.this, "Password Updated Successfully", Toast.LENGTH_SHORT).show();
-                    reference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                                String p=dataSnapshot.child("prn").getValue().toString();
-                                if(p.equals(prn)){
-                                    Toast.makeText(RecoverPassword.this, "Update Done", Toast.LENGTH_SHORT).show();
-                                    Student s=dataSnapshot.getValue(Student.class);
-                                    s.setPasswd(pass);
-                                    reference=FirebaseDatabase.getInstance().getReference("Student").child(prn);
-                                    reference.setValue(s);
-                                    Intent intent=new Intent(RecoverPassword.this,LoginActivity.class);
-                                    startActivity(intent);
+                    if(flag.equals("1")) {
+
+                        Student s=(Student) msg.get("Student");
+                        System.out.println(s.getCourse());
+                        String prn=s.getPrn();
+                        reference = FirebaseDatabase.getInstance().getReference("Student").child(s.getCourse());
+                        reference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                    String p = dataSnapshot.child("prn").getValue().toString();
+                                    if (p.equals(prn)) {
+                                        Toast.makeText(RecoverPassword.this, "Update Done", Toast.LENGTH_SHORT).show();
+                                        Student s = dataSnapshot.getValue(Student.class);
+                                        s.setPasswd(pass);
+                                        reference.child(p).setValue(s);
+                                        Toast.makeText(RecoverPassword.this, "Password Updated Successfully", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             }
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                        }
-                    });
+                            }
+                        });
+                        Intent intent = new Intent(RecoverPassword.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }else {
+                        msg=getIntent().getExtras();
+                        Faculty f=(Faculty)msg.get("Faculty");
+                        String prn=f.getPrn();
+                        reference = FirebaseDatabase.getInstance().getReference("Faculty").child(prn);
+                        reference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    Faculty f = snapshot.getValue(Faculty.class);
+                                    f.setPassword(pass);
+                                    reference.setValue(f);
+                                    Toast.makeText(RecoverPassword.this, "Password Updated Successfully", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        Intent intent = new Intent(RecoverPassword.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 else{
                     Toast.makeText(RecoverPassword.this, "Password Not Matched", Toast.LENGTH_SHORT).show();

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CustomResult extends ArrayAdapter<HashMap<String,String>> {
-    ArrayList<HashMap<String ,String>> resultSheet=new ArrayList<>();
+    ArrayList<HashMap<String ,String>> resultSheet;
     int i;
     public CustomResult(Context context, int textViewResourceId, ArrayList<HashMap<String,String>> objects)
     {

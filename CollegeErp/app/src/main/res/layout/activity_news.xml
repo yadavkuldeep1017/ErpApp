@@ -6,35 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".NewsActivity"
     android:background="@drawable/bg1">
-    <Toolbar
-        android:id="@+id/toolbar1"
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="73dp"
-        android:background="@color/white"
-        android:minHeight="?android:attr/actionBarSize"
-        android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
-        android:titleTextColor="@color/black">
-
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/logo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:text="ERP"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="20sp">
-
-        </TextView>
-    </Toolbar>
+        android:layout_height="71dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="1dp" />
 
     <TextView
         android:id="@+id/txt01"
-        android:layout_below="@id/toolbar1"
+        android:layout_below="@id/include"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

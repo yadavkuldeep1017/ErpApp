@@ -2,10 +2,15 @@ package com.example.collegeerp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -31,9 +36,61 @@ public class AddSubject extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addSubject();
+
+                if(validate())
+                    addSubject();
+                else{
+                    Intent intent=new Intent(AddSubject.this,AddSubject.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
+        ImageButton menuButton = (ImageButton) findViewById(R.id.menubutton);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(AddSubject.this,menuButton);
+                popupMenu.getMenuInflater().inflate(R.menu.popup, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        Intent intent;
+                        switch (menuItem.getItemId())
+                        {
+                            case R.id.profile:intent=new Intent(AddSubject.this,AdminDash.class);
+                                startActivity(intent);
+                                break;
+                            case R.id.logout:intent=new Intent(AddSubject.this,LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                                break;
+                        }
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+    }
+    private boolean validate(){
+        if(TextUtils.isEmpty(sub1.getText())){
+            Toast.makeText(this, "Please Enter Subject 1", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(TextUtils.isEmpty(sub2.getText())){
+            Toast.makeText(this, "Please Enter Subject 2", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(TextUtils.isEmpty(sub3.getText())){
+            Toast.makeText(this, "Please Enter Subject 3", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(TextUtils.isEmpty(sub4.getText())){
+            Toast.makeText(this, "Please Enter Subject 4", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
     private void addSubject(){
         String s1=sub1.getText().toString();
@@ -47,5 +104,7 @@ public class AddSubject extends AppCompatActivity {
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Subject");
         reference.child(crse).child(yer).setValue(s);
         Toast.makeText(this, "Subject Added Successfully", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this,AdminDash.class));
+        finish();
     }
 }

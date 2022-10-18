@@ -3,11 +3,15 @@ package com.example.collegeerp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +31,8 @@ public class AddResultActivity extends AppCompatActivity {
     EditText mark1,mark2,mark3,mark4;
     Button btn,clear;
     String pr="",course="",year="";
+    Faculty f;
+    Student s;
     DatabaseReference reference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +45,11 @@ public class AddResultActivity extends AppCompatActivity {
         btn=findViewById(R.id.addresult);
         clear=findViewById(R.id.button);
         Bundle msg=getIntent().getExtras();
-        pr=msg.getString("PRN");
-        course=msg.getString("Course");
-        year=msg.getString("Year");
-        System.out.println(pr+" "+course+""+year);
+        s=(Student)msg.get("Student");
+        course=s.getCourse();
+        pr=s.getPrn();
+        year=s.getYear();
+        f=(Faculty)msg.get("Faculty");
         setSubject();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,9 +63,36 @@ public class AddResultActivity extends AppCompatActivity {
                 mark1.setText("");mark2.setText("");mark3.setText("");mark4.setText("");
             }
         });
+        ImageButton menuButton = (ImageButton) findViewById(R.id.menubutton);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(AddResultActivity.this,menuButton);
+                popupMenu.getMenuInflater().inflate(R.menu.popup, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        Intent intent;
+                        switch (menuItem.getItemId())
+                        {
+                            case R.id.profile:intent=new Intent(AddResultActivity.this,FacultyProfile.class);
+                                intent.putExtra("Faculty",f);
+                                startActivity(intent);
+                                break;
+                            case R.id.logout:intent=new Intent(AddResultActivity.this,LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                                break;
+                        }
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
     }
     private void setSubject(){
-        reference=FirebaseDatabase.getInstance().getReference("Subject").child(course).child("FY");
+        reference=FirebaseDatabase.getInstance().getReference("Subject").child(course).child(year);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -79,12 +113,17 @@ public class AddResultActivity extends AppCompatActivity {
     }
     private void addResult(){
         reference=FirebaseDatabase.getInstance().getReference("Result");
+        System.out.println(course+" "+pr);
         HashMap<String,String> map=new HashMap<>();
-        map.put(sub1.getText().toString(),mark1.getText().toString());
-        map.put(sub2.getText().toString(),mark2.getText().toString());
-        map.put(sub3.getText().toString(),mark3.getText().toString());
-        map.put(sub4.getText().toString(),mark4.getText().toString());
+        map.put(sub1.getText().toString().trim(),mark1.getText().toString().trim());
+        map.put(sub2.getText().toString().trim(),mark2.getText().toString().trim());
+        map.put(sub3.getText().toString().trim(),mark3.getText().toString().trim());
+        map.put(sub4.getText().toString().trim(),mark4.getText().toString().trim());
         reference.child(course).child(pr).setValue(map);
+        mark1.setText("");mark2.setText("");mark3.setText("");mark4.setText("");
         Toast.makeText(this, "Result Added Successfully", Toast.LENGTH_SHORT).show();
+        Intent intent=new Intent(this,FacultyDash.class);
+        intent.putExtra("Faculty",f);
+        startActivity(intent);
     }
 }

@@ -4,124 +4,167 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg1"
     tools:context=".AddResultActivity"
     >
 
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="1dp" />
 
-        <TextView
-            android:id="@+id/t3"
-            android:layout_width="55dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="96dp"
-            android:layout_marginEnd="24dp"
-            android:text="Sub1:"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/e2"
-            app:layout_constraintHorizontal_bias="0.928"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
-
-        <EditText
-            android:id="@+id/e2"
+        <LinearLayout
+            android:id="@+id/lnr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
-            android:layout_marginEnd="20dp"
-            android:hint="Enter the Marks of first subject"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/t4"
-            android:layout_width="55dp"
-            android:layout_height="33dp"
-
-
-            android:layout_marginStart="52dp"
-            android:layout_marginTop="44dp"
-            android:text="Sub2:"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/e3"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/t3" />
-
-        <TextView
-            android:id="@+id/t5"
-            android:layout_width="55dp"
-            android:layout_height="33dp"
             android:layout_marginTop="36dp"
-            android:layout_marginEnd="28dp"
-            android:text="Sub3:"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/e4"
-            app:layout_constraintHorizontal_bias="0.867"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/t4" />
-
-        <TextView
-            android:id="@+id/t6"
-            android:layout_width="55dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="96dp"
-            android:layout_marginEnd="28dp"
-            android:text="Sub4:"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/e4"
-            app:layout_constraintHorizontal_bias="0.867"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/t4" />
-
-        <EditText
-            android:id="@+id/e3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="28dp"
-            android:hint="Enter Marks of Second subject"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/e2" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include">
 
-        <EditText
-            android:id="@+id/e4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                <ImageView
+                    android:id="@+id/heading"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/results"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="68dp"
+                    android:layout_marginTop="52dp"
+                    android:text="Add Result"
+                    android:textColor="#000000"
+                    android:textSize="34sp"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/include" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="398dp"
+            android:layout_height="458dp"
+            android:layout_marginStart="24dp"
+            android:padding="10dp"
+
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="48dp"
-            android:hint="Enter Marks of third subject"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/e3" />
-
-        <EditText
-            android:id="@+id/e5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="84dp"
-            android:layout_marginEnd="28dp"
-            android:hint="Enter Marks of Fourth subject"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/e3" />
-
-        <Button
-            android:id="@+id/addresult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="104dp"
-            android:text="Add Result"
-            app:layout_constraintEnd_toStartOf="@+id/button"
-            app:layout_constraintHorizontal_bias="0.528"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/t5" />
+            app:layout_constraintTop_toBottomOf="@+id/lnr">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="108dp"
-            android:layout_marginEnd="60dp"
-            android:text="Clear"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/e4" />
+                <TableRow
+                    android:gravity="center">
 
+                        <TextView
+                            android:id="@+id/t3"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Sub1:"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold"></TextView>
 
+                        <EditText
+                            android:id="@+id/e2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter the Marks of first subject" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginTop="20dp"
+                    android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/t4"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Sub2:"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/e3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Marks of Second subject" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginTop="20dp"
+                    android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/t5"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Sub3:"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/e4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Marks of third subject" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginTop="20dp"
+                    android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/t6"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="Sub4:"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/e5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Marks of Fourth subject" />
+                </TableRow>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    >
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            >
+
+                                <Button
+                                    android:id="@+id/addresult"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Result"/>
+
+                                <Button
+                                    android:id="@+id/button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Clear"
+                                    android:layout_marginLeft="20dp"/>
+                        </TableRow>
+                </TableLayout>
+
+        </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

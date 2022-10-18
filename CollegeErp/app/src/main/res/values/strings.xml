@@ -3,13 +3,9 @@
     <string-array name="course">
         <item>MCA</item>
         <item>MCS</item>
-        <item>MSc.(DBA)</item>
-        <item>BCA</item>
-        <item>BCS</item>
     </string-array>
     <string-array name="year">
         <item>FY</item>
         <item>SY</item>
-        <item>TY</item>
     </string-array>
 </resources>
